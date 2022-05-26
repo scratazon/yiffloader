@@ -34,7 +34,7 @@ func main() {
 
 	client := &http.Client{}
 
-	tags := "?tags=shark+intersex+gaping_anus"
+	tags := "?tags=shark+intersex+gaping"
 	rq, e := http.NewRequest("GET", jsonURL+tags, nil)
 	ec(e)
 
