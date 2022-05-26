@@ -1,26 +1,26 @@
 package main
 
 import (
- "time"
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
 	"log"
 	"net/http"
+	"time"
 )
 
 type E6Generated struct {
 	Posts []struct {
 		Sample struct {
 			Url string
+		}
+		Tags struct {
+			General []string
+			Species []string
+		}
 	}
-  Tags struct {
-   General []string 
- 		Species []string
- 	}
- }
 }
- 
+
 func ec(e error) {
 	if e != nil {
 		log.Fatalln(e)
@@ -34,7 +34,7 @@ func main() {
 
 	client := &http.Client{}
 
-	tags := "?tags=shark+intersex"
+	tags := "?tags=shark+intersex+gaping_anus"
 	rq, e := http.NewRequest("GET", jsonURL+tags, nil)
 	ec(e)
 
@@ -52,18 +52,17 @@ func main() {
 
 	json.Unmarshal(in, &bj)
 
- 
 	for i := 0; i <= 75; i++ {
-		time.Sleep(1000*time.Millisecond)
-  if bj.Posts[i].Sample.Url == "" {
-	  fmt.Printf("Post %d: ROODPOSTING\n", i)
-  }
-		for _,v := range bj.Posts[i].Tags.Species {
-   fmt.Print(v, " ")
-  }
-		for _,v := range bj.Posts[i].Tags.General {
-   fmt.Print(v, " ")
-  }
-		time.Sleep(1000*time.Millisecond)
- }
+		time.Sleep(1000 * time.Millisecond)
+		if bj.Posts[i].Sample.Url == "" {
+			fmt.Printf("Post %d: ROODPOSTING\n", i)
+		}
+		for _, v := range bj.Posts[i].Tags.Species {
+			fmt.Print(v, " ")
+		}
+		for _, v := range bj.Posts[i].Tags.General {
+			fmt.Print(v, " ")
+		}
+		time.Sleep(1000 * time.Millisecond)
+	}
 }
