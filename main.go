@@ -55,7 +55,7 @@ func main() {
 	for i := 0; i <= 75; i++ {
 		time.Sleep(1000 * time.Millisecond)
 		if bj.Posts[i].Sample.Url == "" {
-			fmt.Printf("Post %d: ROODPOSTING\n", i)
+			fmt.Printf("Post %d: Very Illegal Post\n", i)
 		}
 		for _, v := range bj.Posts[i].Tags.Species {
 			fmt.Print(v, " ")
